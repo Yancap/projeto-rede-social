@@ -1,15 +1,34 @@
-<section class="box">
+<section>
   <h1 class="page-title">
     Login
   </h1>
   <form action="">
-    <div>
-      <label for="email">Email</label>
-      
-      <app-svg-icon name="email"></app-svg-icon>
+    <div class="form-control">
+      <label for="email">
+        <span>E</span>mail
+      </label>
       <div class="input">
-        <input type="text">
+        <app-svg-icon name="email" height="14" width="14"></app-svg-icon>
+        <input id="email" type="text" placeholder="seuemail@email.com">
       </div>
     </div>
+    <div class="form-control">
+      <label for="password">
+        Senha
+      </label>
+      <div class="input">
+        <app-svg-icon name="password" height="14" width="14"></app-svg-icon>
+        <input id="password" type="password" placeholder="Sua senha">
+      </div>
+    </div>
+    <nav>
+      <a href="">Esqueceu a Senha?</a>
+      <a href="">Cadastre-se</a>
+    </nav>
+    <button class="btn">
+      Entrar
+    </button>
   </form>
+  
 </section>
+
