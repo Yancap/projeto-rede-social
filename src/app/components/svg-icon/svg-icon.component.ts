@@ -29,8 +29,6 @@ export class SvgIconComponent implements OnChanges{
     }
     return null
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log();
-  }
+  ngOnChanges(changes: SimpleChanges): void { }
 
 }

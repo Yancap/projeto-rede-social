@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './pages/login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { SvgIconModule } from './components/svg-icon/svg-icon.module';
+import { RegisterModule } from './pages/register/register.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     BrowserModule,
     AppRoutingModule,
     LoginModule,
+    SvgIconModule,
+    RegisterModule,
     BrowserAnimationsModule,
     MatSlideToggleModule
   ],

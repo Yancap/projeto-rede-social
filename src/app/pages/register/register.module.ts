@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WindowLoginComponent } from 'src/app/components/window-login/window-login.component';
-import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 import { SvgIconComponent } from 'src/app/components/svg-icon/svg-icon.component';
+import { LoginModule } from '../login/login.module';
 import { SvgIconModule } from 'src/app/components/svg-icon/svg-icon.module';
+import { WindowRegisterComponent } from 'src/app/components/window-register/window-register.component';
+
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    WindowLoginComponent
+    RegisterComponent,
+    WindowRegisterComponent
   ],
   imports: [
     CommonModule,
     SvgIconModule
   ],
-  exports: [ LoginComponent ]
+  exports: [ RegisterComponent ]
 })
-export class LoginModule { }
+export class RegisterModule { }
