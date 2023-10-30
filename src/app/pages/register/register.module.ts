@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
-import { SvgIconComponent } from 'src/app/components/svg-icon/svg-icon.component';
-import { LoginModule } from '../login/login.module';
 import { SvgIconModule } from 'src/app/components/svg-icon/svg-icon.module';
-import { WindowRegisterComponent } from 'src/app/components/window-register/window-register.component';
-
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthHttpService } from './../../services/auth.services';
 
 @NgModule({
   declarations: [
-    RegisterComponent,
-    WindowRegisterComponent
+    RegisterComponent
   ],
   imports: [
-    CommonModule,
-    SvgIconModule
+  
+  CommonModule,
+    SvgIconModule,
+    FormsModule,
+    HttpClientModule
   ],
-  exports: [ RegisterComponent ]
+  exports: [ RegisterComponent ],
+  providers: [ AuthHttpService ]
 })
 export class RegisterModule { }

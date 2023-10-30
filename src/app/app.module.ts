@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SvgIconModule } from './components/svg-icon/svg-icon.module';
 import { RegisterModule } from './pages/register/register.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     LoginModule,

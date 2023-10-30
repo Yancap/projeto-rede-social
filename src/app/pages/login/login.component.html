@@ -1,3 +1,35 @@
 <main class="container">
-  <app-window-login class="box"></app-window-login>
+  <section class="box">
+    <h1 class="page-title">
+      Login
+    </h1>
+    <form action="">
+      <div class="form-control">
+        <label for="email">
+          <span>E</span>mail
+        </label>
+        <div class="input">
+          <app-svg-icon name="email" height="14" width="14"></app-svg-icon>
+          <input id="email" type="text" [(ngModel)]="email"  name="password" placeholder="seuemail@email.com">
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="password">
+          Senha
+        </label>
+        <div class="input">
+          <app-svg-icon name="password" height="14" width="14"></app-svg-icon>
+          <input id="password" type="password" [(ngModel)]="password"  name="password" placeholder="Sua senha">
+        </div>
+      </div>
+      <nav>
+        <!-- <a (click)="navigate('')">Esqueceu a Senha?</a> -->
+        <a (click)="navigate('/register')">Cadastre-se</a>
+      </nav>
+      <button class="btn" (click)="handleSubmit()">
+        Entrar
+      </button>
+    </form>
+    
+  </section>
 </main>

@@ -1,3 +1,96 @@
 <main class="container">
-  <app-window-register class="box"></app-window-register>
+  <form>
+    <section class="box">
+      <h1 class="page-title">
+        R<span>e</span>gist<span>e</span>r
+      </h1>
+      <div action="" class="register">
+        <div class="form-row">
+          <div class="form-control">
+            <label for="name">
+              Nome
+            </label>
+            <div class="input">
+              <app-svg-icon name="name" height="14" width="14"></app-svg-icon>
+              <input id="name" type="text" name="name" 
+                [(ngModel)]="register.name" placeholder="Seu nome" required
+              >
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="email">
+              <span>E</span>mail
+            </label>
+            <div class="input">
+              <app-svg-icon name="email" height="14" width="14"></app-svg-icon>
+              <input id="email" type="text" name="email" 
+                [(ngModel)]="register.email" placeholder="seuemail@email.com" required
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-control">
+            <label for="password">
+              Senha
+            </label>
+            <div class="input">
+              <app-svg-icon name="password" height="14" width="14"></app-svg-icon>
+              <input id="password" type="password" name="password" 
+                [(ngModel)]="register.password" placeholder="Sua senha" required
+              >
+            </div>
+            
+          </div>
+          <div class="form-control">
+            <label for="confirm-password">
+              Confirmar senha
+            </label>
+            <div class="input">
+              <app-svg-icon name="password" height="14" width="14"></app-svg-icon>
+              <input id="confirm-password" type="password" name="confirmPassword" 
+                [(ngModel)]="register.confirmPassword"  placeholder="Confirmar senha" required
+              >
+            </div>
+            
+          </div>
+        </div>
+    
+    
+        <nav>
+          <span *ngIf="error.exist" class="error">
+            Senhas diferentes
+          </span>
+          <a (click)="navigate('/')">Ja possui uma conta?</a>
+        </nav>
+        <button class="btn" (click)="handleSubmit()">
+          Enviar
+        </button>
+      </div>
+      
+    </section>
+    <div class="box form-avatar">
+      <figure class="avatar"> 
+        <img [src]="!register.avatar ? '../../../assets/images/avatar.jpg' : register.avatar" 
+          alt="" srcset=""
+        >
+      </figure>
+      
+      <button *ngIf="!register.avatar ; else isAdded" class="btn">
+          <label for="image">Adicionar</label>
+      </button>
+      
+      <ng-template #isAdded>
+        <div class="group-btn">
+          <button class="btn-outline" (click)="deleteAvatar()">
+            Excluir
+          </button>
+          <button class="btn">
+            <label for="image">Trocar</label>
+          </button>
+        </div>
+      </ng-template>
+      <input type="file" id="image" name="avatar" (input)="handleAvatar($event)">
+    </div>    
+  </form>
 </main>
