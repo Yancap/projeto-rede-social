@@ -1,38 +1,4 @@
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$projeto-rede-social-primary: mat.define-palette(mat.$indigo-palette);
-$projeto-rede-social-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$projeto-rede-social-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$projeto-rede-social-theme: mat.define-light-theme((
-  color: (
-    primary: $projeto-rede-social-primary,
-    accent: $projeto-rede-social-accent,
-    warn: $projeto-rede-social-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($projeto-rede-social-theme);
-
 $gray-100: #FBF4FE;
 $gray-200: #F4E7FB;
 $gray-400: #D0D0D0;
@@ -43,11 +9,14 @@ $pink-100: #FBF4FE;
 $pink-200: #F4E7FB;
 
 $orange-300: #F3DCDC;
+$orange-400: #F5BCBA;
 
 $blue-200: #C3C7F3;
 
 $purple-700: #635373;
 $purple-800: #40354A;
+
+
 
 $font-text: 'Montserrat', Helvetica, Arial, sans-serif;
 $font-title: 'Montserrat Alternates', 'Montserrat', Helvetica, Arial, sans-serif;
@@ -60,6 +29,7 @@ $font-title: 'Montserrat Alternates', 'Montserrat', Helvetica, Arial, sans-serif
 
 body {
   background: $pink-100;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6, label {
   font-family: $font-title;
@@ -67,6 +37,11 @@ h1, h2, h3, h4, h5, h6, label {
 
 p, span, strong, input, a {
   font-family: $font-text;
+}
+
+ul li {
+  list-style: none;
+  margin: 0;
 }
 
 .box {

@@ -8,21 +8,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SvgIconModule } from './components/svg-icon/svg-icon.module';
 import { RegisterModule } from './pages/register/register.module';
-import { FormsModule } from '@angular/forms';
+import { HomeModule } from './pages/home/home.module';
+import { HeaderComponent } from './components/header/header.component';
+  
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
-    
     BrowserModule,
     AppRoutingModule,
     LoginModule,
     SvgIconModule,
     RegisterModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

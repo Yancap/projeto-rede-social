@@ -1,0 +1,29 @@
+@import "../../../styles.scss";
+
+
+a{
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.125rem;
+}
+
+header{
+  background: white;
+  border-bottom: 1.5px solid $orange-400;
+  width: 100vw;
+}
+
+ul {
+  display: flex;
+  gap: 1.2rem;
+}
+
+li {
+  list-style: none;
+  padding: 1rem .5rem;
+  cursor: pointer;
+
+  &:hover {
+    background: $pink-100;
+  }
+}

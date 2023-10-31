@@ -1,0 +1,14 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 1.5rem;
+  padding: 4rem 0 2rem 0;
+}
+
+photo {
+  background: red;
+  height: 18rem;
+  width: 18rem;
+  border-radius: .5rem;
+}
