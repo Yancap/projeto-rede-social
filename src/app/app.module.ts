@@ -10,6 +10,7 @@ import { SvgIconModule } from './components/svg-icon/svg-icon.module';
 import { RegisterModule } from './pages/register/register.module';
 import { HomeModule } from './pages/home/home.module';
 import { HeaderComponent } from './components/header/header.component';
+import { ModalPostComponent } from './components/modal-post/modal-post.component';
   
 
 @NgModule({

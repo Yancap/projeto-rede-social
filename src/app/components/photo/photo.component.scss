@@ -1,0 +1,11 @@
+li {
+  display: grid;
+  grid-area: 1 / 1;
+
+}
+img {
+  display: block;
+  aspect-ratio: 1/1;
+  grid-area: 1/1;
+  max-width: 100%;
+}
