@@ -40,7 +40,7 @@ photo:nth-child(12n + 7) {
   grid-row: span 2;
 }
 
-modal-post{
+.modal-post{
   position: fixed;
   top: 0;
   left: 0;
@@ -52,4 +52,26 @@ modal-post{
   display: flex;
   justify-content: center;
   align-items: center;
+
+  header{
+    height: 16px;
+    background: #c3c7f34b;
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    transition: .25s;
+    &:hover {
+      background: #c3c7f394;
+    }
+    img {
+      height: 12px;
+      width: 12px;
+    }
+    @media screen and (min-width: 661px) {
+      display: none;
+    }
+  }
+
+  
 }

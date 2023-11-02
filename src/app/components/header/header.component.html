@@ -1,16 +1,19 @@
 <header>
   <nav class="container">
     <ul>
-      <a href="">
+      <a routerLink="" routerLinkActive="active-route">
         <li>
           Home
         </li>
       </a>
-      <a href="">
+      <a routerLink="/messages" routerLinkActive="active-route">
         <li>
           Messages
         </li>
       </a>
     </ul>
+    <div (click)="logout()">
+      <img src="../../../assets/svg/profile.svg" alt="profile">
+    </div>
   </nav>
 </header>

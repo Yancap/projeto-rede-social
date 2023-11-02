@@ -10,9 +10,11 @@ $pink-200: #F4E7FB;
 
 $orange-300: #F3DCDC;
 $orange-400: #F5BCBA;
+$orange-700: #FF7575;
 
 $blue-200: #C3C7F3;
 
+$purple-500: #C8A8E9;
 $purple-700: #635373;
 $purple-800: #40354A;
 
@@ -27,10 +29,32 @@ $font-title: 'Montserrat Alternates', 'Montserrat', Helvetica, Arial, sans-serif
   box-sizing: border-box;
 }
 
+html {
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+  }
+}
+
 body {
   background: $pink-100;
   overflow-x: hidden;
+  
 }
+*::-webkit-scrollbar {
+  width: 8px; 
+}
+
+*::-webkit-scrollbar-track {
+  background: $purple-500;       
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $orange-400;   
+  border-radius: 20px;    
+  border: 1px solid $purple-500;  
+}
+
+
 h1, h2, h3, h4, h5, h6, label {
   font-family: $font-title;
 }
@@ -46,7 +70,7 @@ ul li {
 
 .box {
   border-radius: 16px;
-  background: $pink-100;
+  background: white;
   box-shadow:  3px 3px 0px $orange-300,
               -3px -3px 0px $pink-200;
   padding: 4rem 3rem;
@@ -95,7 +119,7 @@ ul li {
 }
 
 .input {
-  background: $pink-100;
+  background: #FEFCFF;
   display: flex;
   align-items: center;
   padding: .4rem .7rem;

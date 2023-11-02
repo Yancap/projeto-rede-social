@@ -9,14 +9,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SvgIconModule } from './components/svg-icon/svg-icon.module';
 import { RegisterModule } from './pages/register/register.module';
 import { HomeModule } from './pages/home/home.module';
-import { HeaderComponent } from './components/header/header.component';
-import { ModalPostComponent } from './components/modal-post/modal-post.component';
-  
+import { HeaderComponent } from './components/header/header.component';  
+import { MessagesModule } from './pages/messages/messages.module';
+import { PersonMessageComponent } from './components/person-message/person-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +26,8 @@ import { ModalPostComponent } from './components/modal-post/modal-post.component
     RegisterModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    HomeModule
+    HomeModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

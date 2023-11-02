@@ -1,13 +1,19 @@
 <main class="container">
   <section>
     <ul>
-      <photo />
-      <photo />
-      <photo />
-      <photo />
-      <photo />
-      <photo />
+      <photo (click)="handleOpenModal()" />
+      <photo (click)="handleOpenModal()" />
+      <photo (click)="handleOpenModal()" />
+      <photo (click)="handleOpenModal()" />
+      <photo (click)="handleOpenModal()" />
+      <photo (click)="handleOpenModal()" />
     </ul>
   </section>
 </main>
-<!-- <modal-post /> -->
+<div class="modal-post" *ngIf="modalOpened" (click)="handleCloseModal($event)" #modal>
+  <modal-post>
+    <header (click)="modalOpened = false">
+      <img src="" alt="X" >
+    </header>
+  </modal-post>
+</div>

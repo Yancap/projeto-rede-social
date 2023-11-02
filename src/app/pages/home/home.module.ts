@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { PhotoComponent } from '../../components/photo/photo.component';
 import { ModalPostComponent } from '../../components/modal-post/modal-post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -10,10 +11,13 @@ import { ModalPostComponent } from '../../components/modal-post/modal-post.compo
   declarations: [
     HomeComponent, 
     PhotoComponent,
-    ModalPostComponent
+    ModalPostComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ]
 })
-export class HomeModule { }
+export class HomeModule { 
+  
+ }

@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { SvgIconModule } from 'src/app/components/svg-icon/svg-icon.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthHttpService } from 'src/app/services/auth.services';
+import { AuthHttpService } from 'src/app/services/auth.service';
 
 @NgModule({
   declarations: [LoginComponent],

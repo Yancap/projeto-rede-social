@@ -10,6 +10,7 @@ section{
     width: 100%;
     grid-template-rows: 3fr 3fr;
     place-content: center;
+    border-radius: 0;
     height: 100vh;
     padding: 0 !important;
   }
@@ -17,10 +18,16 @@ section{
 
 picture {
   aspect-ratio: 1/1;
+  overflow: hidden;
+  object-fit: cover;
   @media screen and (max-width: 660px) {
     aspect-ratio: initial;
   }
-  background: red;
+  img {
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+  }
 }
 
 article {
@@ -44,7 +51,7 @@ article {
     margin-bottom: .75rem;
   }
   p{
-    font-size: 14px;
+    font-size: .875rem;
     font-family: 'Montserrat', Helvetica, sans-serif;
   }
 }
