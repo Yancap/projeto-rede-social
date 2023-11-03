@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ResponsePosts } from '../../services/api.service.d';
 
 @Component({
   selector: 'modal-post',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./modal-post.component.scss']
 })
 export class ModalPostComponent {
-  
+  @Input() post!: ResponsePosts;
 }

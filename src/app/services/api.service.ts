@@ -1,22 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponsePosts } from './api.service.d';
+import { delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private url = "https://jsonplaceholder.typicode.com/";
-  private post!: ResponsePosts[];
+  private url = "http://localhost:3000/posts";
 
   constructor(private http: HttpClient) { }
 
-  public async getPost(){
-    this.http.get<ResponsePosts[]>(this.url + "posts")
-    .subscribe(data => {
-      this.post = data
-    });
-    console.log(this.post);
+  public getPost(page: number){
+    return this.http.get<ResponsePosts[]>(this.url+`?_page=${page}&_limit=6`)
+    .pipe(delay(1000))
   }
 
 }

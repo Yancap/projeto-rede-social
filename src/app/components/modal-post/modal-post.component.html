@@ -1,24 +1,19 @@
 <section class="container box" >
   <picture>
     <ng-content select="header"></ng-content>
-    <img src="https://dogsapi.origamid.dev/wp-content/uploads/2020/07/freddie-marriage-w39PTDxKiK8-unsplash-1-1000x1000.jpg" alt="">
+    <img src="{{post.image}}" alt="">
   </picture>
   <article>
     <div>
       <span class="user-id">
-        @yangabriel
+        {{post.user_tag}}
       </span>
     </div>
     <h2>
-      Titulo da postagem da rede social em angular
+      {{post.title}}
     </h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Maecenas et dolor vitae ex aliquam tristique. 
-      Pellentesque habitant morbi tristique senectus et netus et 
-      malesuada fames ac turpis egestas. Donec nec justo feugiat, 
-      tincidunt urna pretium, rhoncus felis. Cras ut porta mauris. 
-      Sed ultrices quis lectus ac viverra. Nam ac nibh tortor.
+      {{post.text}}
     </p>
   </article>
 </section>

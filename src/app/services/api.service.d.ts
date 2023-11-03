@@ -1,6 +1,7 @@
 export interface ResponsePosts {
-  userId: number;
   id: number;
   title: string;
-  body: string;
+  text: string;
+  image: string;
+  user_tag: string;
 }
