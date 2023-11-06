@@ -4,6 +4,8 @@ import { HomeComponent } from './home.component';
 import { PhotoComponent } from '../../components/photo/photo.component';
 import { ModalPostComponent } from '../../components/modal-post/modal-post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WritePostComponent } from '../../components/write-post/write-post.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,10 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent, 
     PhotoComponent,
     ModalPostComponent,
+    WritePostComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class HomeModule { 

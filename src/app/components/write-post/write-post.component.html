@@ -1,0 +1,20 @@
+<section>
+  <div class="write-post">
+    <div>
+      <input type="text" placeholder="Título" [(ngModel)]="post.title">
+    </div>
+    <div>
+      <textarea placeholder="Seu texto" [(ngModel)]="post.text"></textarea>
+    </div>
+    <button class="btn">Publicar</button>
+  </div>
+  <picture class="photo">
+    <picture>
+      <img src="{{post.image}}">
+    </picture>
+    <label for="photo" class="btn">
+        {{ post.image === null ? "Adicionar" : "Trocar" }}
+    </label>
+    <input type="file" style="display: none;" id="photo" (change)="setImage($event)">
+  </picture>
+</section>

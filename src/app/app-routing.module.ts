@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'messages', component: MessagesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 

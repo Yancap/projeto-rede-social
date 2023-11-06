@@ -91,6 +91,14 @@ footer {
   }
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 3.5rem - 112px);
+}
+
+
 .lds-ellipsis {
   display: inline-block;
   position: relative;

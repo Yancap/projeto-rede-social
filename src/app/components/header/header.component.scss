@@ -11,6 +11,7 @@ header{
   background: white;
   border-bottom: 1.5px solid $orange-400;
   width: 100vw;
+  height: 3.5rem;
 }
 
 ul {
@@ -36,6 +37,7 @@ nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
 
 div {

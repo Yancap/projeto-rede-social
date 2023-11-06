@@ -1,24 +1,28 @@
-<main class="container" (scroll)="onScroll($event)">
-  <section>
-    <ul>
-      <photo *ngFor="let post of posts" (click)="handleOpenModal(post)" [image]="post.image"/>
-    </ul>
-  </section>
+<section>
+  <main class="container" (scroll)="onScroll($event)">
+    <write-post />
+    <section>
+      <ul>
+        <photo *ngFor="let post of posts" (click)="handleOpenModal(post)" [image]="post.image"/>
+      </ul>
+    </section>
+  
+  </main>
+  <footer>
+    <div class="container" *ngIf="isLoading">
+      <span>
+        Carregando
+      </span>
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div *ngIf="isEnded">
+      <span>
+        Acabou
+      </span>
+    </div>
+  </footer>
+</section>
 
-</main>
-<footer>
-  <div class="container" *ngIf="!isLoading">
-    <span>
-      Carregando
-    </span>
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-  </div>
-  <div *ngIf="isEnded">
-    <span>
-      Acabou
-    </span>
-  </div>
-</footer>
 <div class="modal-post" *ngIf="modalOpened" (click)="handleCloseModal($event)" #modal>
   <modal-post [post]="thisPost">
     <header (click)="modalOpened = false">

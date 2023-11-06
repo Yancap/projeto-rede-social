@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponsePosts } from './api.service.d';
+import { CreatePost, ResponsePosts } from './api.service.d';
 import { delay } from 'rxjs';
 
 @Injectable({
@@ -16,4 +16,7 @@ export class ApiService {
     .pipe(delay(1000))
   }
 
+  public createPost(post: CreatePost) {
+    return this.http.post(this.url, JSON.stringify(post))
+  }
 }

@@ -1,0 +1,82 @@
+@import "../../../styles.scss";
+
+section {
+  width: 100%;
+  background: white;
+  padding: 2rem 3rem 1rem;
+  display: flex;
+  gap: 1.5rem;
+  min-height: 14rem;
+
+  @media screen and (max-width: 764px) {
+    flex-direction: column;
+    height: auto;
+
+    picture {
+      order: 1;
+      flex-grow: 1;
+      width: auto;
+      height: 223px;
+      aspect-ratio: initial;
+      
+    }
+    .write-post {
+      order: 2;
+    }
+  }
+}
+
+.photo {
+  
+  height: 223px;
+  width: 223px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  
+  label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  picture {
+    border: 2px solid $orange-300;
+    overflow: hidden;
+    width: 100%;
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+.write-post {
+  flex-grow:2;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+
+  input {
+    width: 100%;
+    padding: .2rem .35rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  textarea{
+    width: 100%;
+    padding: .2rem .35rem;
+    font-size: 1rem;
+    resize: none;
+    height: 8rem;
+  }
+}

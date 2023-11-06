@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll = (event: any) =>{
-    if(!this.isEnded) {
+    if(!this.isEnded && !this.isLoading) {
       this.page++
       this.isLoading = true;
       this.apiService.getPost(this.page).subscribe(data => {
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
           this.isLoading = false;
           return;
         }
+        this.isLoading = false;
         this.isEnded = true;
       });
     }
@@ -53,12 +54,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    window.addEventListener("scrollend", this.onScroll)
     this.isLoading = true;
+    window.addEventListener("scrollend", this.onScroll)
     this.apiService.getPost(1).subscribe(data => {
       this.posts.push(...data)
       this.isLoading = false;
+      return;
     });
   }
 }

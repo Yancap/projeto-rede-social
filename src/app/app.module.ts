@@ -12,6 +12,7 @@ import { HomeModule } from './pages/home/home.module';
 import { HeaderComponent } from './components/header/header.component';  
 import { MessagesModule } from './pages/messages/messages.module';
 import { PersonMessageComponent } from './components/person-message/person-message.component';
+import { WritePostComponent } from './components/write-post/write-post.component';
 
 @NgModule({
   declarations: [
