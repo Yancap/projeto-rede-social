@@ -22,6 +22,9 @@
           <input id="password" type="password" [(ngModel)]="password"  name="password" placeholder="Sua senha">
         </div>
       </div>
+      <span *ngIf="error" class="error">
+        {{error}}
+      </span>
       <nav>
         <!-- <a (click)="navigate('')">Esqueceu a Senha?</a> -->
         <a (click)="navigate('/register')">Cadastre-se</a>

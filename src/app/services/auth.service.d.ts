@@ -9,3 +9,12 @@ export interface RegisterBody {
   password: string;
   avatar: string | ArrayBuffer | null;
 }
+
+export interface Users {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  user_tag: string;
+  
+}

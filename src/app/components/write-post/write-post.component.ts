@@ -41,7 +41,11 @@ export class WritePostComponent {
     this.service.createPost({...this.post, user_tag: "@yan"}).subscribe(data => {
       this.response = data;
       console.log(data);
-      
     })
+    this.post = {
+      title: "",
+      text: "",
+      image: null,
+    };
   }
 }

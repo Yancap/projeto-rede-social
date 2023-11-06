@@ -6,7 +6,7 @@
     <div>
       <textarea placeholder="Seu texto" [(ngModel)]="post.text"></textarea>
     </div>
-    <button class="btn">Publicar</button>
+    <button class="btn" (click)="handlePublish()">Publicar</button>
   </div>
   <picture class="photo">
     <picture>

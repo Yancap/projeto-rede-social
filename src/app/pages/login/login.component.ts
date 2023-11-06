@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginHttpService } from './login.services';
 import { AuthHttpService } from '../../services/auth.service';
+import { Users } from '../../services/auth.service.d';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +15,26 @@ export class LoginComponent {
   ) {}
   public password: string = '';
   public email: string = '';
-  public response: object = {};
+  public user: Users = { } as Users;
+  public error!: string | undefined;
+
   public async handleSubmit() {
-    this.authHttpService
-      .login({
+    try {
+      this.user = await this.authHttpService.login({
         email: this.email,
         password: this.password,
       })
-      .subscribe((data) => (this.response = data));
-    console.log(this.response);
+    } catch (error) {
+      if(error instanceof Error) {
+        this.error = error.message
+      }
+    }
+    
+    sessionStorage.setItem('name', this.user.name)
+    sessionStorage.setItem('user_tag', this.user.user_tag)
+    sessionStorage.setItem('email', this.user.email)
+
+    this.navigate("home")
   }
 
   navigate(path: string) {

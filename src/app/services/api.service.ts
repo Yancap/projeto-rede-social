@@ -17,6 +17,6 @@ export class ApiService {
   }
 
   public createPost(post: CreatePost) {
-    return this.http.post(this.url, JSON.stringify(post))
+    return this.http.post(this.url, post)
   }
 }
