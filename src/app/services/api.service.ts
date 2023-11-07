@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreatePost, ResponsePosts } from './api.service.d';
-import { delay } from 'rxjs';
+import { delay, take, takeUntil, takeWhile } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,6 @@ export class ApiService {
   }
 
   public createPost(post: CreatePost) {
-    return this.http.post(this.url, post)
+    return this.http.post(this.url, post).pipe(delay(1000), take(1))
   }
 }

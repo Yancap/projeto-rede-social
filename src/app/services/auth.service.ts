@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, find, map } from 'rxjs';
 import { LoginBody, RegisterBody, Users } from './auth.service.d'
 
 
@@ -12,25 +12,19 @@ export class AuthHttpService {
   constructor(private http: HttpClient) { }
 
 
-  async login({email, password}: LoginBody){
-    let user: Users | undefined = {} as Users;
-    const users = await (await fetch(this.url)).json()
-    
-    user = users.find((user: Users) => user.email === email && user.password === password)
-    if(!user) {
-      throw new Error("Invalid credentials")
-    }
-
-    return user
-    
+  login({email, password}: LoginBody){
+    return this.http.get<Users[]>(this.url)
+    .pipe(map(user => {
+      return user.find(u => u.email === email && u.password === password)
+    }))
   }
   
   register({name, email, password, avatar}: RegisterBody){
-    const user = this.http.post(this.url + "/register", {name, email, password, avatar}, {
+    return this.http.post(this.url + "/register", {name, email, password, avatar}, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
-    return user
+     
   }
 }

@@ -10,7 +10,7 @@ export interface RegisterBody {
   avatar: string | ArrayBuffer | null;
 }
 
-export interface Users {
+export interface Users extends Object{
   id: number;
   name: string;
   email: string;

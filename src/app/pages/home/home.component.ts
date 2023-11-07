@@ -37,9 +37,12 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll = (event: any) =>{
-    if(!this.isEnded && !this.isLoading) {
-      this.page++
+    let doc = document.documentElement
+    const value = 100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight)
+    
+    if(!this.isEnded && !this.isLoading && value >= 95) {
       this.isLoading = true;
+      this.page++
       this.apiService.getPost(this.page).subscribe(data => {
         if(data.length > 0) {
           this.posts.push(...data)
@@ -55,7 +58,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    window.addEventListener("scrollend", this.onScroll)
+    window.addEventListener("scroll", this.onScroll)
     this.apiService.getPost(1).subscribe(data => {
       this.posts.push(...data)
       this.isLoading = false;
