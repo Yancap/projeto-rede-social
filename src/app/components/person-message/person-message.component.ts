@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./person-message.component.scss']
 })
 export class PersonMessageComponent {
+  @Input() class!: string;
   @Input() avatar!: string;
   @Input() name!: string;
-  @Input() email?: string;
+  @Input() user_tag?: string;
 }

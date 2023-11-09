@@ -21,9 +21,9 @@
             <label for="email">
               <span>E</span>mail
             </label>
-            <div class="input">
+            <div class="input" [class]="error.type === 'PasswordNotEquals' ? 'input-error': ''">
               <svg-icon name="email" height="14" width="14"></svg-icon>
-              <input id="email" type="text" name="email" 
+              <input id="email" type="text" name="email"
                 [(ngModel)]="register.email" placeholder="seuemail@email.com" required
               >
             </div>
@@ -34,7 +34,7 @@
             <label for="password">
               Senha
             </label>
-            <div class="input">
+            <div class="input" [class]="error.type === 'PasswordNotEquals' ? 'input-error': '' ">
               <svg-icon name="password" height="14" width="14"></svg-icon>
               <input id="password" type="password" name="password" 
                 [(ngModel)]="register.password" placeholder="Sua senha" required
@@ -46,7 +46,7 @@
             <label for="confirm-password">
               Confirmar senha
             </label>
-            <div class="input">
+            <div class="input" [class]="error.type === 'PasswordNotEquals' ? 'input-error': ''">
               <svg-icon name="password" height="14" width="14"></svg-icon>
               <input id="confirm-password" type="password" name="confirmPassword" 
                 [(ngModel)]="register.confirmPassword"  placeholder="Confirmar senha" required
@@ -59,7 +59,7 @@
     
         <nav>
           <span *ngIf="error.exist" class="error">
-            Senhas diferentes
+            {{error.message}}
           </span>
           <a (click)="navigate('/login')">Ja possui uma conta?</a>
         </nav>

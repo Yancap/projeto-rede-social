@@ -19,8 +19,6 @@ export class RegisterComponent {
     message: ""
   }
 
-  public response: any = {};
-
   public register: {
     name: string;
     email: string;
@@ -36,12 +34,30 @@ export class RegisterComponent {
   }
 
   async handleSubmit(){
+    this.error = {
+      exist: false,
+      type: "",
+      message: ""
+    }
     if(this.register.password !== this.register.confirmPassword) {
       this.error.exist = true;
-      this.error.type = "";
-      this.error.message = "Senhas"
+      this.error.type = "PasswordNotEquals";
+      this.error.message = "Senhas Diferentes"
+      return;
     }
-    this.authService.register(this.register).subscribe(data => this.response = data)
+
+    try {
+      await this.authService.register(this.register)
+    } catch (error) {
+      if(error instanceof Error) {
+        this.error = {
+          exist: true,
+          message: error.message,
+          type: "EmailAlreadyExist"
+        }
+      }
+    }
+    return this.router.navigate(['/login'])
   }
 
   handleAvatar(event: any | InputEvent){

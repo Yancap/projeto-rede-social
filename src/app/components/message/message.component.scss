@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+
+div {
+  box-sizing: content-box;
+  padding: .5rem .75rem;
+  display: flex;
+  gap: .25rem;
+  overflow: hidden;
+  border-radius: 6px;
+}
+p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+span {
+  font-size: 10px;
+  color: $orange-700;
+  font-weight: 500;
+}

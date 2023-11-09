@@ -19,12 +19,16 @@ export class AuthHttpService {
     }))
   }
   
-  register({name, email, password, avatar}: RegisterBody){
-    return this.http.post(this.url + "/register", {name, email, password, avatar}, {
+  async register({name, email, password, avatar}: RegisterBody){
+    const users: Users[] = await (await fetch(this.url)).json()
+
+    if(users.some((user) => user.email === email)) throw new Error("Email já cadastrado")
+    const user_tag = "@" + email.split("@")[0]
+    return this.http.post(this.url, {name, email, password, avatar, user_tag}, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json'
       }
-    })
+    }).subscribe().unsubscribe()
      
   }
 }

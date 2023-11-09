@@ -4,10 +4,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'messages', component: MessagesComponent},
+  {path: '', redirectTo: "/login", pathMatch: "full"},
+  {path: 'home', component: HomeComponent, canActivate: [authGuard]},
+  {path: 'messages', component: MessagesComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
   

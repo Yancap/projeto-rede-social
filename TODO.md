@@ -1,4 +1,4 @@
-[] - Realizar a aula de unsubscribe implementando todas as formas aqui e anotando no drive
+[x] - Realizar a aula de unsubscribe implementando todas as formas aqui e anotando no drive
 
 Lidar com os diferentes erros da aplicação
 ajeitar o envio do forms com a foto

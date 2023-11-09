@@ -1,13 +1,15 @@
 <main class="container">
   <aside>
-    
+    <person-message name="John Doe" user_tag="@johndoe" class="aside-item"/>
   </aside>
   <section>
     <header>
       <person-message name="John Doe"/>
     </header>
-    <div>
-
+    <div class="container-messages">
+      <label-data-message date="October 10" [style]="{alignSelf: 'center'}"/>
+      <message message="oi" date="1696978548093" [isCurrentUser]="true" [style.alignSelf]="true ? 'flex-end' :  'flex-start'"/>
+      <message message="oi" date="1696978548093" [isCurrentUser]="false" [style.alignSelf]="false ? 'flex-end' :  'flex-start'"/>
     </div>
     <footer>
       <textarea type="text" placeholder="Escreva sua mensagem"></textarea>
