@@ -4,6 +4,7 @@ import { MessagesComponent } from './messages.component';
 import { PersonMessageComponent } from '../../components/person-message/person-message.component';
 import { MessageComponent } from '../../components/message/message.component';
 import { LabelDataMessageComponent } from '../../components/message/label-data-message/label-data-message.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { LabelDataMessageComponent } from '../../components/message/label-data-m
     LabelDataMessageComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class MessagesModule { }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { Chat, DataChatFormate, GetUsersKeyChatResponse, UserChat } from './messages.d';
 import { axios } from '../../config/axios';
 
@@ -9,15 +9,33 @@ import { axios } from '../../config/axios';
 })
 export class MessagesService {
 
-  constructor() { }
+  public url = "http://localhost:3000/";
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   async getUsersKeyChat(user_tag: string, chatUserTag: string){
-    return (await axios.get<GetUsersKeyChatResponse[]>("chat_keys?user_tag=" + user_tag)).data
+    return (await axios.get<GetUsersKeyChatResponse[]>("chat_keys?user_tag=" + user_tag))
+    .data[0].chats[chatUserTag].key
   }
-  async getUserChatUsingTheKey(user_tag: string, chatUserTag: string){
-    const key = (await this.getUsersKeyChat(user_tag, chatUserTag))[0].chats[chatUserTag].key
+  async getUserChatUsingTheKey2(key: string){
     const chat = await axios<UserChat[]>("chat?key=" + key)
     return this.paginationMessagesInDatas(this.organizeChat(chat.data[0].chats))
+  }
+
+  getUserChatUsingTheKey(key: string){
+    return this.http.get<UserChat[]>(this.url + "chat?key=" + key)
+    .pipe(
+      map(response => this.paginationMessagesInDatas(
+        this.organizeChat(response[0].chats)
+        )
+      )
+    )
+  }
+
+  sendMessages(){
+    
   }
 
   private organizeChat(chat: {[key: string]:Chat}){

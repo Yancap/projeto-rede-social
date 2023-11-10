@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs';
 import { ResponsePosts } from '../../services/api.service.d';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('modal') modal!: ElementRef<HTMLElement>;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private route: ActivatedRoute
   ){}
   
   public handleOpenModal(post: ResponsePosts) {
@@ -57,12 +59,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoading = true;
     window.addEventListener("scroll", this.onScroll)
-    this.apiService.getPost(1).subscribe(data => {
-      this.posts.push(...data)
-      this.isLoading = false;
-      return;
+    this.posts = this.route.snapshot.data["posts"]
+  }
+
+  getPosts() {
+    return this.apiService.getPost(1).subscribe(data => {
+      return data;
     });
   }
 }

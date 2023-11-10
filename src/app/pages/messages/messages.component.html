@@ -7,13 +7,18 @@
       <person-message name="John Doe"/>
     </header>
     <div class="container-messages">
-      <label-data-message date="October 10" [style]="{alignSelf: 'center'}"/>
-      <message message="oi" date="1696978548093" [isCurrentUser]="true" [style.alignSelf]="true ? 'flex-end' :  'flex-start'"/>
-      <message message="oi" date="1696978548093" [isCurrentUser]="false" [style.alignSelf]="false ? 'flex-end' :  'flex-start'"/>
+      <ng-container *ngFor="let data of messages">
+        <label-data-message  date="{{data.date}}" [style]="{alignSelf: 'center'}"/>
+        <message *ngFor="let message of data.messages" 
+          [message]="message.message" [date]="message.date" 
+          [isCurrentUser]="message.user_tag === currentUser" 
+          [style.alignSelf]="message.user_tag === currentUser ? 'flex-end' :  'flex-start'"
+        />
+      </ng-container>
     </div>
     <footer>
-      <textarea type="text" placeholder="Escreva sua mensagem"></textarea>
-      <button>
+      <textarea type="text" placeholder="Escreva sua mensagem" [(ngModel)]="inputMessage"></textarea>
+      <button (click)="handleSubmit()">
         <img src="../../../assets/svg/send.svg">
       </button>
     </footer>
