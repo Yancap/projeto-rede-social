@@ -7,11 +7,11 @@
       <person-message name="John Doe"/>
     </header>
     <div class="container-messages">
-      <ng-container *ngFor="let data of messages">
+      <ng-container *ngFor="let data of messages ">
         <label-data-message  date="{{data.date}}" [style]="{alignSelf: 'center'}"/>
-        <message *ngFor="let message of data.messages" 
-          [message]="message.message" [date]="message.date" 
-          [isCurrentUser]="message.user_tag === currentUser" 
+        <message *ngFor="let message of data.messages"
+          [message]="message.message" [date]="message.created_at"
+          [isCurrentUser]="message.user_tag === currentUser"
           [style.alignSelf]="message.user_tag === currentUser ? 'flex-end' :  'flex-start'"
         />
       </ng-container>

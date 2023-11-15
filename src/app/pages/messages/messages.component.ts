@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { MessagesService } from '../../services/messages.service';
 import { DataChatFormate } from '../../services/messages';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, first, take } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -13,7 +13,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
   public messages!: DataChatFormate[]
   public currentUser!: string | null;
   public inputMessage!: string;
-  public messager$!: Subscription;
+  public messager$!: Observable<DataChatFormate[]>;
+  public subscription!: Subscription;
   public key!: string;
 
   constructor(
@@ -25,13 +26,23 @@ export class MessagesComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.key = await this.messageService.getUsersKeyChat("@yan", "@john")
     this.messager$ = this.messageService.getUserChatUsingTheKey(this.key)
-    .subscribe( data => this.messages = data )
+    this.messager$.pipe(first()).subscribe(data => this.messages = data)
   }
+
   ngOnDestroy(){
-    this.messager$.unsubscribe()
+    this.subscription.unsubscribe()
   }
 
   handleSubmit(){
-
+    const dataMessager = {
+      key: this.key,
+      user_tag: this.currentUser as string,
+      message: this.inputMessage
+    }
+    try {
+      this.messageService.sendMessages(dataMessager)
+    } catch (error) { } finally {
+      this.subscription = this.messager$.subscribe(data => this.messages = data)
+    }
   }
 }
