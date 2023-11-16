@@ -6,6 +6,7 @@ import {
   DataChatFormate,
   GetUsersKeyChatResponse,
   UserChat,
+  Users,
 } from './messages.d';
 import { axios } from '../../config/axios';
 
@@ -17,6 +18,12 @@ export class MessagesService {
 
   constructor(private http: HttpClient) {}
 
+  async getKeysChatsFromTalk(user_tag: string){
+    return Object.keys((await axios.get<GetUsersKeyChatResponse[]>(
+      'chat_keys?user_tag=' + user_tag
+    )).data[0].chats)
+  }
+
   async getUsersKeyChat(user_tag: string, chatUserTag: string) {
     return (
       await axios.get<GetUsersKeyChatResponse[]>(
@@ -24,11 +31,9 @@ export class MessagesService {
       )
     ).data[0].chats[chatUserTag].key;
   }
-  async getUserChatUsingTheKey2(key: string) {
-    const chat = await axios<UserChat[]>('chat' + key);
-    return this.paginationMessagesInDatas(
-      this.organizeChat(chat.data[0].chats)
-    );
+
+  async getUsersFromTalk(keys: string){
+    return (await axios.post<Users[]>("talk/users", {keys})).data
   }
 
   getUserChatUsingTheKey(key: string) {

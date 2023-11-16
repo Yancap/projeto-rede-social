@@ -1,10 +1,13 @@
 <main class="container">
   <aside>
-    <person-message name="John Doe" user_tag="@johndoe" class="aside-item"/>
+    <person-message *ngFor="let user of users; let i=index"
+      [name]="user.name" [user_tag]="user.user_tag" class="aside-item"
+      [index]="i"
+    />
   </aside>
   <section>
     <header>
-      <person-message name="John Doe"/>
+      <person-message name=""/>
     </header>
     <div class="container-messages">
       <ng-container *ngFor="let data of messages ">
