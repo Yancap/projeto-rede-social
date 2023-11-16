@@ -2,12 +2,15 @@
 
 
 time {
+  display: block;
   background: $orange-700;
-  padding: .5rem 1rem;
+  padding: .35rem 1rem;
   border-radius: 100px;
 }
 
 span{
+  display: inline-block;
+  margin: 0 auto;
   color: white;
   font-size: 14px;
   font-size: 900;

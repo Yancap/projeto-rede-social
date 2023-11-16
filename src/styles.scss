@@ -38,20 +38,20 @@ html {
 body {
   background: $pink-100;
   overflow-x: hidden;
-  
+
 }
 *::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background: $purple-500;       
+  background: $purple-500;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: $orange-400;   
-  border-radius: 20px;    
-  border: 1px solid $purple-500;  
+  background-color: $orange-400;
+  border-radius: 20px;
+  border: 1px solid $purple-500;
 }
 
 
@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6, label {
   font-family: $font-title;
 }
 
-p, span, strong, input, a {
+p, span, strong, input, a, time {
   font-family: $font-text;
 }
 
@@ -125,7 +125,7 @@ ul li {
   padding: .4rem .7rem;
   border-bottom: 1px solid $purple-800;
   gap: .5rem;
-  
+
   input {
     outline: none;
     border: none;

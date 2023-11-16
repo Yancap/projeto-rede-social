@@ -8,7 +8,7 @@
     </header>
     <div class="container-messages">
       <ng-container *ngFor="let data of messages ">
-        <label-data-message  date="{{data.date}}" [style]="{alignSelf: 'center'}"/>
+        <label-data-message  date="{{data.date}}" [style]="{alignSelf: 'center', height: 'fit-content'}"/>
         <message *ngFor="let message of data.messages"
           [message]="message.message" [date]="message.created_at"
           [isCurrentUser]="message.user_tag === currentUser"

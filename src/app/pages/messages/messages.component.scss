@@ -5,7 +5,7 @@ main{
   background: white;
   display: grid;
   grid-template-columns: minmax(14rem, 1fr) 4fr;
-  
+
 }
 
 aside {
@@ -39,9 +39,10 @@ footer {
     border: 1px solid $orange-700;
     padding: .15rem .75rem 0 ;
     font-weight: 500;
-    resize: none;
+    resize: vertical;
     height: auto;
-    max-height: 3rem;
+    min-height: 1.5rem;
+    max-height: 5rem;
     &::placeholder{
       font-weight: 300;
     }
@@ -75,4 +76,8 @@ footer {
   flex-direction: column;
   gap: 8px;
   overflow-y: auto;
+}
+
+message {
+  max-width: 80%;
 }

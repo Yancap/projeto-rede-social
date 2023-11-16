@@ -3,19 +3,22 @@
 
 div {
   box-sizing: content-box;
-  padding: .5rem .75rem;
+  padding: .35rem .75rem;
   display: flex;
   gap: .25rem;
   overflow: hidden;
   border-radius: 6px;
 }
 p {
-  font-size: 1rem;
+  font-size: .825rem;
   font-weight: 500;
 }
 
-span {
-  font-size: 10px;
+time {
+  font-size: 8px;
   color: $orange-700;
-  font-weight: 500;
+  font-weight: 600;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: 1px;
 }
