@@ -2,12 +2,18 @@
   <aside>
     <person-message *ngFor="let user of users; let i=index"
       [name]="user.name" [user_tag]="user.user_tag" class="aside-item"
-      [index]="i"
+      [index]="i" (onIndex)="onOutDataMessage($event)"
     />
   </aside>
   <section>
     <header>
-      <person-message name=""/>
+      <person-message
+      [name]="outDataMessage.name" [avatar]="outDataMessage.avatar"
+      *ngIf="this.messages; else selectMessage"
+      />
+      <ng-template  #selectMessage>
+        <span>Selecione um chat</span>
+      </ng-template>
     </header>
     <div class="container-messages">
       <ng-container *ngFor="let data of messages ">

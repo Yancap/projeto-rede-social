@@ -32,7 +32,7 @@ export class MessagesService {
     ).data[0].chats[chatUserTag].key;
   }
 
-  async getUsersFromTalk(keys: string){
+  async getUsersFromTalk(keys: string[]){
     return (await axios.post<Users[]>("talk/users", {keys})).data
   }
 

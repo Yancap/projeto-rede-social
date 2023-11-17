@@ -20,7 +20,9 @@ server.post("/chats", (req, res) => {
 
 server.post("/talk/users", (req, res) => {
   const keys = req.body["keys"]
-  let users = router.db.value()["users"].filter( data => data.user_tag.includes(keys) )
+  console.log(keys);
+  console.log(router.db.value()["users"]);
+  let users = router.db.value()["users"].filter( data => keys.includes(data.user_tag))
   return res.send(users);
 });
 

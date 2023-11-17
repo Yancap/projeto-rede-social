@@ -8,7 +8,7 @@
       "user_tag": "@john"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Yan",
       "email": "yan@email.com",
       "password": "12345",
@@ -20,7 +20,7 @@
       "password": "123",
       "avatar": null,
       "user_tag": "@yan123",
-      "id": 2
+      "id": 3
     }
   ],
   "posts": [
@@ -283,6 +283,9 @@
       "chats": {
         "@john": {
           "key": "@yan@john"
+        },
+        "@yan123": {
+          "key": "@yan123@yan"
         }
       }
     },
@@ -291,6 +294,14 @@
       "chats": {
         "@yan": {
           "key": "@yan@john"
+        }
+      }
+    },
+    {
+      "user_tag": "@yan123",
+      "chats": {
+        "@yan": {
+          "key": "@yan123@yan"
         }
       }
     }
@@ -327,7 +338,7 @@
       }
     },
     {
-      "key": "@yan123@john",
+      "key": "@yan123@yan",
       "chats": {
         "1696978548093": {
           "message": "Oias",

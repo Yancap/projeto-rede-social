@@ -1,1 +1,1 @@
-Emitir os dados para o componente pai
+Adicionar o avatar no chat
