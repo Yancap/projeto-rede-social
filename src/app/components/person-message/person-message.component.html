@@ -1,6 +1,6 @@
 <div class="content {{class}}" (click)="handleClick()">
   <picture>
-    <img src="../../../assets/svg/avatar.svg" alt="">
+    <img [src]="avatar ? avatar : '../../../assets/svg/avatar.svg'" alt="">
   </picture>
   <div>
     <h3>{{name}}</h3>

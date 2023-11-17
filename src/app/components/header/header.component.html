@@ -13,7 +13,7 @@
       </a>
     </ul>
     <div (click)="logout()">
-      <img src="../../../assets/svg/profile.svg" alt="profile">
+      <img [src]="userAvatar ? userAvatar : '../../../assets/svg/profile.svg'" alt="profile">
     </div>
   </nav>
 </header>

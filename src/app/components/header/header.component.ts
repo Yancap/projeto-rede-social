@@ -8,11 +8,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   public activeRoute!: boolean;
+  public userAvatar!: string | null;
   constructor(
     private router: Router,
-  ){}
+  ){
+    this.userAvatar = sessionStorage.getItem('avatar')
+  }
 
   public logout(){
-    this.router.navigate(['/login']);
+    sessionStorage.removeItem('avatar')
+    sessionStorage.removeItem('name')
+    sessionStorage.removeItem('user_tag')
+    sessionStorage.removeItem('email')
+
+    this.router.navigate(['login']);
   }
 }

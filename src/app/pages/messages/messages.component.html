@@ -2,21 +2,23 @@
   <aside>
     <person-message *ngFor="let user of users; let i=index"
       [name]="user.name" [user_tag]="user.user_tag" class="aside-item"
+      [avatar]="user.avatar"
       [index]="i" (onIndex)="onOutDataMessage($event)"
     />
   </aside>
   <section>
     <header>
       <person-message
-      [name]="outDataMessage.name" [avatar]="outDataMessage.avatar"
-      *ngIf="this.messages; else selectMessage"
+        *ngIf="outDataMessage; else selectMessage"
+        [name]="outDataMessage.name" [avatar]="outDataMessage.avatar"
       />
       <ng-template  #selectMessage>
         <span>Selecione um chat</span>
       </ng-template>
     </header>
     <div class="container-messages">
-      <ng-container *ngFor="let data of messages ">
+      <span *ngIf="!messages" >Inicie uma conversa</span>
+      <ng-container *ngFor="let data of messages">
         <label-data-message  date="{{data.date}}" [style]="{alignSelf: 'center', height: 'fit-content'}"/>
         <message *ngFor="let message of data.messages"
           [message]="message.message" [date]="message.created_at"
@@ -24,6 +26,7 @@
           [style.alignSelf]="message.user_tag === currentUser ? 'flex-end' :  'flex-start'"
         />
       </ng-container>
+
     </div>
     <footer>
       <textarea type="text" placeholder="Escreva sua mensagem" [(ngModel)]="inputMessage"></textarea>

@@ -16,12 +16,12 @@ export interface UserChat {
 }
 
 interface Chat {
-  
+
   message: string,
   date: string,
   created_at: string,
   user_tag: string
-  
+
 }
 
 export interface DataChatFormate {
@@ -33,6 +33,7 @@ export interface Users {
   id: number;
   name: string;
   email: string;
+  avatar: string;
   password: string;
   user_tag: string;
 }

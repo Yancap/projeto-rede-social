@@ -11,17 +11,17 @@ import { UserChatInfoEmmiter } from 'src/app/components/person-message/models/us
 })
 export class MessagesComponent implements OnInit, OnDestroy {
 
-  public messages!: DataChatFormate[]
+  public messages!: DataChatFormate[] | null;
 
   public keysTalks!: string[];
   public users!: Users[];
-  public outDataMessage!: UserChatInfoEmmiter
+  public outDataMessage?: UserChatInfoEmmiter;
 
   public currentUser!: string | null;
   public inputMessage!: string;
   public messager$!: Observable<DataChatFormate[]>;
-  public subscription!: Subscription;
-  public key!: string;
+  public subscription?: Subscription;
+  public key!: string | null;
 
   constructor(
     private messageService: MessagesService
@@ -31,31 +31,45 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.keysTalks = (await this.messageService.getKeysChatsFromTalk(this.currentUser as string));
-    this.users = await this.messageService.getUsersFromTalk(this.keysTalks);
+    this.users = await this.messageService.getUsersForTalk(this.currentUser as string);
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe()
+    if (this.subscription) {
+      this.subscription.unsubscribe()
+    }
   }
 
   async onOutDataMessage(event: UserChatInfoEmmiter){
     this.outDataMessage = event
     this.key = await this.messageService.getUsersKeyChat(this.currentUser as string, event.user_tag)
+    this.messages = null;
 
-    this.messager$ = this.messageService.getUserChatUsingTheKey(this.key)
-    this.messager$.pipe(first()).subscribe(data => this.messages = data)
+
+    if(this.key) {
+      this.messager$ = this.messageService.getUserChatUsingTheKey(this.key)
+      this.messager$.pipe(first()).subscribe(data => this.messages = data)
+    }
+
   }
 
   handleSubmit(){
-    const dataMessager = {
-      key: this.key,
-      user_tag: this.currentUser as string,
-      message: this.inputMessage
+    if (this.key) {
+      const dataMessager = {
+        key: this.key,
+        user_tag: this.currentUser as string,
+        message: this.inputMessage
+      }
+      try {
+        this.messageService.sendMessages(dataMessager)
+      } catch (error) { } finally {
+        this.subscription = this.messager$.subscribe(data => this.messages = data)
+      }
+      return;
     }
-    try {
-      this.messageService.sendMessages(dataMessager)
-    } catch (error) { } finally {
-      this.subscription = this.messager$.subscribe(data => this.messages = data)
+
+    if (this.currentUser && this.outDataMessage) {
+      const newChatKey = this.currentUser + this.outDataMessage.user_tag
     }
   }
 }

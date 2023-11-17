@@ -6,11 +6,10 @@ import { LoginBody, RegisterBody, Users } from './auth.service.d'
 
 @Injectable({ providedIn: 'root' })
 export class AuthHttpService {
+
   private url = "http://localhost:3000/users";
 
-
   constructor(private http: HttpClient) { }
-
 
   login({email, password}: LoginBody){
     return this.http.get<Users[]>(this.url)
@@ -18,7 +17,7 @@ export class AuthHttpService {
       return user.find(u => u.email === email && u.password === password)
     }))
   }
-  
+
   async register({name, email, password, avatar}: RegisterBody){
     const users: Users[] = await (await fetch(this.url)).json()
 
@@ -29,6 +28,6 @@ export class AuthHttpService {
         'Content-Type': 'application/json'
       }
     }).subscribe().unsubscribe()
-     
+
   }
 }

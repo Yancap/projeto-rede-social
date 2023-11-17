@@ -25,15 +25,21 @@ export class MessagesService {
   }
 
   async getUsersKeyChat(user_tag: string, chatUserTag: string) {
-    return (
-      await axios.get<GetUsersKeyChatResponse[]>(
-        'chat_keys?user_tag=' + user_tag
-      )
-    ).data[0].chats[chatUserTag].key;
+    try {
+      const dataChat = (
+        await axios.get<GetUsersKeyChatResponse[]>(
+          'chat_keys?user_tag=' + user_tag
+        )
+      ).data[0].chats[chatUserTag].key
+      return dataChat;
+    } catch (error) {
+      return null;
+    }
+
   }
 
-  async getUsersFromTalk(keys: string[]){
-    return (await axios.post<Users[]>("talk/users", {keys})).data
+  async getUsersForTalk(user_tag: string){
+    return (await axios.get<Users[]>("users?user_tag_ne="+user_tag)).data
   }
 
   getUserChatUsingTheKey(key: string) {

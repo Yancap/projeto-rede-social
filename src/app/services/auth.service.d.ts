@@ -14,7 +14,8 @@ export interface Users extends Object{
   id: number;
   name: string;
   email: string;
+  avatar: string;
   password: string;
   user_tag: string;
-  
+
 }
