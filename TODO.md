@@ -1,1 +1,1 @@
-Fazer a lógica da criação de um novo chat 
+Ajeitar a criação do chat com o chat zerado
