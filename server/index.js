@@ -12,11 +12,33 @@ server.use(cors())
 server.post("/chats", (req, res) => {
   const key = req.body["key"]
   const userChat = req.body["chat"]
-  let chat = router.db.value()["chat"].find( data => data.key === key )
 
-  chat.chats = {...chat.chats, [userChat["id"]]: userChat}
-  router.db.write(userChat)
-  return res.send();
+  try {
+    let chat = router.db.value()["chat"]
+    if (chat.find( data => data.key === key )) {
+
+      chat = chat.map( obj => {
+        if(obj.key === key) {
+          obj.chats[userChat.id] = userChat
+        }
+        return obj
+      })
+
+
+      router.db.set("chat", chat)
+      .write(chat)
+      return res.send();
+    }
+    const dataChat = {
+      [userChat.id]: userChat
+    }
+    router.db.set("chat", [...chat, { key, chats: dataChat }])
+    .write([...chat, { key, chats: dataChat }])
+    return res.send();
+  } catch(e) {
+    return res.send();
+  }
+
 });
 
 server.post("/talk/users", (req, res) => {
@@ -34,6 +56,7 @@ server.post("/chat_keys", (req, res) => {
 
   if(currentUser) {
     currentUser["chats"][users_tags[1]] = { key }
+    router.db.write(currentUser)
   } else {
     currentUser = {
       user_tag: users_tags[0],
@@ -41,10 +64,14 @@ server.post("/chat_keys", (req, res) => {
         [ users_tags[1] ]: { key }
       }
     }
+    let chat_keys = router.db.value()["chat_keys"]
+    router.db.set("chat_keys", [...chat_keys, otherUser]).write([...chat_keys, otherUser])
+    router.db.create(currentUser)
   }
 
   if(otherUser) {
     otherUser["chats"][users_tags[0]] = { key }
+    router.db.write(otherUser)
   } else {
     otherUser = {
       user_tag: users_tags[1],
@@ -52,13 +79,11 @@ server.post("/chat_keys", (req, res) => {
         [ users_tags[0] ]: { key }
       }
     }
+    let chat_keys = router.db.value()["chat_keys"]
+    router.db.set("chat_keys", [...chat_keys, otherUser]).write([...chat_keys, otherUser])
   }
 
-  let chat_keys = router.db.value()["chat_keys"]
-  console.log(otherUser);
-  console.log(currentUser);
-
-  router.db.write([currentUser, otherUser])
+  router.db.merge()
   return res.send();
 });
 

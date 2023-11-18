@@ -284,9 +284,6 @@
       "chats": {
         "@john": {
           "key": "@yan@john"
-        },
-        "@yan123": {
-          "key": "@yan@yan123"
         }
       }
     },
@@ -303,29 +300,10 @@
     {
       "key": "@yan@john",
       "chats": {
-        "1696978548093": {
-          "id": "1696978548093",
-          "message": "Oi",
-          "date": "Tue Oct 10 2023",
-          "created_at": "1696978548093",
-          "user_tag": "@yan"
-        },
-        "1696978558493": {
-          "id": "1696978558493",
-          "message": "Olá",
-          "created_at": "1696978558493",
-          "user_tag": "@john"
-        },
-        "1700134903617": {
-          "id": "1700134903617",
-          "message": "testeando sadfsdasdaf\nsadfdsafs\nsadf",
-          "created_at": 1700134903617,
-          "user_tag": "@yan"
-        },
-        "1700146086744": {
-          "id": "1700146086744",
-          "message": "testeando sadfsdasdaf sadfdsafs sadf\n\ntesteando sadfsdasdaf sadfdsafs sadf\n\ntesteando sadfsdasdaf sadfdsafs sadf\n\ntesteando sadfsdasdaf sadfdsafs sadf\n\n",
-          "created_at": 1700146086744,
+        "1700319963997": {
+          "id": "1700319963997",
+          "message": "oi",
+          "created_at": 1700319963997,
           "user_tag": "@yan"
         }
       }

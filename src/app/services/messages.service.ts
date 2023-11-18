@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, first, map, take } from 'rxjs';
+import { Observable, concatMap, first, map, take } from 'rxjs';
 import {
   Chat,
+  CreateNewChat,
   DataChatFormate,
   GetUsersKeyChatResponse,
   UserChat,
@@ -18,10 +19,16 @@ export class MessagesService {
 
   constructor(private http: HttpClient) {}
 
-  async getKeysChatsFromTalk(user_tag: string){
-    return Object.keys((await axios.get<GetUsersKeyChatResponse[]>(
+  async getKeysChatsFromTalk(user_tag: string) {
+    const data = ( await axios.get<GetUsersKeyChatResponse[]>(
       'chat_keys?user_tag=' + user_tag
-    )).data[0].chats)
+    )
+    ).data
+    if (data[0] && "chats" in data[0]) {
+      const keys = Object.keys(data);
+      return keys
+    }
+    return []
   }
 
   async getUsersKeyChat(user_tag: string, chatUserTag: string) {
@@ -30,16 +37,15 @@ export class MessagesService {
         await axios.get<GetUsersKeyChatResponse[]>(
           'chat_keys?user_tag=' + user_tag
         )
-      ).data[0].chats[chatUserTag].key
+      ).data[0].chats[chatUserTag].key;
       return dataChat;
     } catch (error) {
       return null;
     }
-
   }
 
-  async getUsersForTalk(user_tag: string){
-    return (await axios.get<Users[]>("users?user_tag_ne="+user_tag)).data
+  async getUsersForTalk(user_tag: string) {
+    return (await axios.get<Users[]>('users?user_tag_ne=' + user_tag)).data;
   }
 
   getUserChatUsingTheKey(key: string) {
@@ -52,18 +58,43 @@ export class MessagesService {
       );
   }
 
-  sendMessages(data: {key: string, message: string, user_tag: string}) {
+  async createNewChat(data: CreateNewChat) {
+    return await axios.post<CreateNewChat>('chat_keys', data);
+  }
+
+  createNewChatAndSendMessager(
+    dataChat: CreateNewChat,
+    dataMessage: { message: string; user_tag: string }
+  ) {
+
+    const createNewChat = this.http
+      .post(this.url + 'chat_keys', dataChat)
+      .pipe(
+        concatMap((p) =>{
+          return this.sendMessages({ ...dataMessage, key: dataChat.key })
+        }),
+        concatMap((p) => {
+          return this.getUserChatUsingTheKey(dataChat.key)
+        }
+      )
+      );
+
+    return createNewChat;
+  }
+  sendMessages(data: { key: string; message: string; user_tag: string }) {
     const date = Date.now();
 
-    this.http.post(this.url + 'chats', {
-      key: data.key,
-      chat: {
-        id: date.toString(),
-        message: data.message,
-        created_at: date,
-        user_tag: data.user_tag,
-      },
-    }).pipe(first()).subscribe();
+    return this.http
+      .post(this.url + 'chats', {
+        key: data.key,
+        chat: {
+          id: date.toString(),
+          message: data.message,
+          created_at: date,
+          user_tag: data.user_tag,
+        },
+      })
+      .pipe(first());
   }
 
   private organizeChat(chat: { [key: string]: Chat }) {

@@ -37,3 +37,8 @@ export interface Users {
   password: string;
   user_tag: string;
 }
+
+export interface CreateNewChat {
+  key: string;
+  users_tags: string[];
+}
