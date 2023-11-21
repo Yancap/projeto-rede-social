@@ -1,0 +1,23 @@
+@import "../../../styles.scss";
+
+
+ul{
+  border-radius: .45rem;
+  background: white;
+  align-self: flex-end;
+  border: 1.5px solid $orange-400;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+
+}
+
+li {
+  font-size: 14px;
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+    color: $purple-700;
+  }
+}

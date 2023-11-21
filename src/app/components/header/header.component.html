@@ -12,8 +12,13 @@
         </li>
       </a>
     </ul>
-    <div (click)="logout()">
-      <img [src]="userAvatar ? userAvatar : '../../../assets/svg/profile.svg'" alt="profile">
+    <div (click)="openModal()">
+      <img *ngIf="userAvatar; else default" [src]="userAvatar">
+      <ng-template #default>
+        <img src="../../../assets/svg/profile.svg">
+      </ng-template>
     </div>
+    <modal-profile *ngIf="toggleModalProfile"/>
   </nav>
 </header>
+

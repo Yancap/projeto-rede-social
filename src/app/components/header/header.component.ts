@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,21 +6,19 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   public activeRoute!: boolean;
-  public userAvatar!: string | null;
+  public userAvatar?: string | null;
+  public toggleModalProfile: boolean = false;
   constructor(
     private router: Router,
-  ){
+  ){ }
+
+  ngOnInit(): void {
     this.userAvatar = sessionStorage.getItem('avatar')
   }
 
-  public logout(){
-    sessionStorage.removeItem('avatar')
-    sessionStorage.removeItem('name')
-    sessionStorage.removeItem('user_tag')
-    sessionStorage.removeItem('email')
-
-    this.router.navigate(['login']);
+  public openModal(){
+    this.toggleModalProfile = !this.toggleModalProfile;
   }
 }

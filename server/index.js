@@ -65,8 +65,7 @@ server.post("/chat_keys", (req, res) => {
       }
     }
     let chat_keys = router.db.value()["chat_keys"]
-    router.db.set("chat_keys", [...chat_keys, otherUser]).write([...chat_keys, otherUser])
-    router.db.create(currentUser)
+    router.db.set("chat_keys", [...chat_keys, currentUser]).write([...chat_keys, currentUser])
   }
 
   if(otherUser) {

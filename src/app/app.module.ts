@@ -15,11 +15,13 @@ import { PersonMessageComponent } from './components/person-message/person-messa
 import { WritePostComponent } from './components/write-post/write-post.component';
 import { MessageComponent } from './components/message/message.component';
 import { LabelDataMessageComponent } from './components/message/label-data-message/label-data-message.component';
+import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ModalProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,9 @@ export class LoginComponent implements OnDestroy{
       sessionStorage.setItem('name', this.user.name)
       sessionStorage.setItem('user_tag', this.user.user_tag)
       sessionStorage.setItem('email', this.user.email)
-      sessionStorage.setItem('avatar', this.user.avatar)
+      if (this.user.avatar) {
+        sessionStorage.setItem('avatar', this.user.avatar)
+      }
 
       this.navigate("home")
       return data

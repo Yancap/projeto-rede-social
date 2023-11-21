@@ -1,1 +1,1 @@
-Ajeitar a criação do chat com o chat zerado
+Fazer a troca de avatar
