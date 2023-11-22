@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChangeAvatarService } from '../change-avatar/change-avatar.service';
 
 @Component({
   selector: 'modal-profile',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 export class ModalProfileComponent {
   constructor(
     private router: Router,
+    public changeAvatarService: ChangeAvatarService
   ){ }
 
   public logout(){

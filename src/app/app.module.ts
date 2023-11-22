@@ -9,19 +9,18 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SvgIconModule } from './components/svg-icon/svg-icon.module';
 import { RegisterModule } from './pages/register/register.module';
 import { HomeModule } from './pages/home/home.module';
-import { HeaderComponent } from './components/header/header.component';  
+import { HeaderComponent } from './components/header/header.component';
 import { MessagesModule } from './pages/messages/messages.module';
-import { PersonMessageComponent } from './components/person-message/person-message.component';
-import { WritePostComponent } from './components/write-post/write-post.component';
-import { MessageComponent } from './components/message/message.component';
-import { LabelDataMessageComponent } from './components/message/label-data-message/label-data-message.component';
 import { ModalProfileComponent } from './components/modal-profile/modal-profile.component';
+import { ChangeAvatarComponent } from './components/change-avatar/change-avatar.component';
+import { ChangeAvatarService } from './components/change-avatar/change-avatar.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ModalProfileComponent,
+    ChangeAvatarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +33,7 @@ import { ModalProfileComponent } from './components/modal-profile/modal-profile.
     HomeModule,
     MessagesModule
   ],
-  providers: [],
+  providers: [ChangeAvatarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

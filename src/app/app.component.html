@@ -1,4 +1,5 @@
 <app-header *ngIf="actualRoute !== '/register' && actualRoute !== '/login'"/>
-<section class="main">
+<section class="main" [class.padding]="actualRoute !== '/register' && actualRoute !== '/login'">
   <router-outlet></router-outlet>
 </section>
+<change-avatar />
