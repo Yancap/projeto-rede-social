@@ -12,12 +12,12 @@
         </li>
       </a>
     </ul>
-    <div (click)="openModal()">
+    <picture (click)="openModal()">
       <img *ngIf="userAvatar; else default" [src]="userAvatar">
       <ng-template #default>
         <img src="../../../assets/svg/profile.svg">
       </ng-template>
-    </div>
+    </picture>
     <modal-profile *ngIf="toggleModalProfile"/>
   </nav>
 </header>

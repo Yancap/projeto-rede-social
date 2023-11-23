@@ -70,6 +70,16 @@ section {
   }
 }
 
+.error {
+  font-size: 13px;
+  font-weight: 700;
+  color: $orange-700;
+}
+.success {
+  font-size: 13px;
+  font-weight: 700;
+  color: $green-500;
+}
 
 .group-button {
   display: flex;
@@ -80,19 +90,28 @@ section {
   label {
     cursor: pointer;
     display: block;
+    width: 100%;
+    height: 100%;
   }
   button {
+    cursor: pointer;
     padding: .35rem .5rem;
     text-transform: uppercase;
     font-weight: 700;
     font-family: $font-title;
     background: $pink-100;
     border-radius: .25rem;
+    flex-grow: 1;
   }
 
   .btn-add{
     border: 1px solid $purple-700;
     color: $purple-700;
+  }
+
+  .btn-send{
+    border: 1px solid $green-500;
+    color: $green-500;
   }
 
   .btn-cancel{

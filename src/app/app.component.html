@@ -1,5 +1,5 @@
-<app-header *ngIf="actualRoute !== '/register' && actualRoute !== '/login'"/>
+<app-header *ngIf="actualRoute !== '/register' && actualRoute !== '/login'" [avatarIsChanged]="avatarIsChanged"/>
 <section class="main" [class.padding]="actualRoute !== '/register' && actualRoute !== '/login'">
   <router-outlet></router-outlet>
 </section>
-<change-avatar />
+<change-avatar (avatarChanged)="setAvatarIsChanged($event)" *ngIf="changeAvatarService.isOpen"/>

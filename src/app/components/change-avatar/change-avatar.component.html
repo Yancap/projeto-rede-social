@@ -1,28 +1,36 @@
-<section *ngIf="service.isOpen" (click)="closeModal($event, background)" #background>
+<section (click)="closeModal($event, background)" #background>
   <div class="container-photo">
     <button class="close-modal" (click)="service.toggle()">
-      <img src="../../../assets/svg/close.svg" alt="">
+      <img src="../../../assets/svg/close.svg" alt="" />
     </button>
     <picture class="photo">
-      <img src="../../../assets/images/avatar.jpg" alt="">
+      <img [src]="photo" alt="" />
     </picture>
+    <span *ngIf="handleError && !handleSuccess" class="error">
+      {{handleError}}
+    </span>
+    <span *ngIf="handleSuccess" class="success">
+      Alteração realizada com sucesso
+    </span>
     <div class="group-button">
-      <button class="btn-add">
-        <label for="avatar">
-          Adicionar foto
-        </label>
+      <button class="btn-add" *ngIf="!photo; else changePhoto">
+        <label for="avatar"> Adicionar foto </label>
       </button>
-
-      <button class="btn-add">
-        <label for="avatar">
-          Trocar foto
-        </label>
-      </button>
-      
-      <button class="btn-cancel">
-        Cancelar
-      </button>
-      <input id="avatar" type="file" style="display: none;">
+      <ng-template #changePhoto>
+        <button class="btn-add">
+          <label for="avatar"> Trocar foto </label>
+        </button>
+        <button class="btn-send" (click)="handleSubmit()">
+          Enviar
+        </button>
+        <button class="btn-cancel" (click)="deleteAvatar()">Cancelar</button>
+      </ng-template>
+      <input
+        id="avatar"
+        type="file"
+        style="display: none"
+        (input)="handleAvatar($event)"
+      />
     </div>
   </div>
 </section>

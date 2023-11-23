@@ -86,6 +86,14 @@ server.post("/chat_keys", (req, res) => {
   return res.send();
 });
 
+server.put("/users/avatar", (req, res) => {
+  const {user_tag, avatar} = req.body
+  const currentUser = router.db.value()["users"].find( data => data.user_tag === user_tag )
+  currentUser.avatar = avatar
+  router.db.write(currentUser)
+  return res.send(currentUser);
+})
+
 server.use(middlewares);
 server.use(router);
 server.listen(3000, () => {
