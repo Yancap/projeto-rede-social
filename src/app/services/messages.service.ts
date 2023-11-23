@@ -15,7 +15,7 @@ import { axios } from '../../config/axios';
   providedIn: 'root',
 })
 export class MessagesService {
-  public url = 'http://localhost:3000/';
+  public url = process.env['URL_SERVER_JSON'];
 
   constructor(private http: HttpClient) {}
 

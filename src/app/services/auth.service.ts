@@ -7,7 +7,7 @@ import { LoginBody, RegisterBody, Users } from './auth.service.d'
 @Injectable({ providedIn: 'root' })
 export class AuthHttpService {
 
-  private url = "http://localhost:3000/users";
+  private url = process.env['URL_SERVER_JSON'] + "users";
 
   constructor(private http: HttpClient) { }
 

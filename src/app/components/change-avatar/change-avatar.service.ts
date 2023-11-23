@@ -8,7 +8,7 @@ import { Users } from 'src/app/services/auth.service.d';
 })
 export class ChangeAvatarService {
   public isOpen = false;
-  private url = 'http://localhost:3000/users/avatar';
+  private url = process.env['URL_SERVER_JSON'] + 'users/avatar';
   constructor(private http: HttpClient) {}
 
   public toggle() {

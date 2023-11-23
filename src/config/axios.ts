@@ -1,5 +1,5 @@
 import ax from 'axios';
 
 export const axios = ax.create({
-  baseURL: "http://localhost:3000/"  
+  baseURL: process.env['URL_SERVER_JSON']
 })

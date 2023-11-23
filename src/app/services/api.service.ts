@@ -7,7 +7,7 @@ import { delay, map, take, takeUntil, takeWhile } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private url = "http://localhost:3000/posts";
+  private url = process.env['URL_SERVER_JSON'] + "post";
 
   constructor(private http: HttpClient) { }
 
